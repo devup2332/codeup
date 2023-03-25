@@ -1,0 +1,40 @@
+{
+  "login": {
+    "title": "Welcome to ",
+    "brand": "Code up",
+    "registerText": {
+      "text": "Don't you have an account ?",
+      "link": "Register"
+    },
+    "socialButton": {
+      "text": "Sign in with ",
+      "google": {
+        "brand": "Google"
+      },
+      "github": {
+        "brand": "Github"
+      }
+    },
+    "forgotPassword": {
+      "text": "Forgot your password ?"
+    },
+    "button": {
+      "submitText": "Sign In"
+    },
+    "errors": {
+      "email": {
+        "required": {
+          "text": "Email is required"
+        },
+        "pattern": {
+          "text": "Email is invalid"
+        }
+      },
+      "password": {
+        "required": {
+          "text": "Password is required"
+        }
+      }
+    }
+  }
+}
