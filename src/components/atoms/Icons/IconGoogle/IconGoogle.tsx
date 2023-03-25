@@ -1,6 +1,8 @@
+import { SvgIcon } from "@mui/material";
+
 const IconGoogle = (props: any) => {
   return (
-    <svg
+    <SvgIcon
       xmlns="http://www.w3.org/2000/svg"
       preserveAspectRatio="xMidYMid"
       viewBox="0 0 256 262"
@@ -23,7 +25,7 @@ const IconGoogle = (props: any) => {
         fill="#EB4335"
         d="M130.55 50.479c24.514 0 41.05 10.589 50.479 19.438l36.844-35.974C195.245 12.91 165.798 0 130.55 0 79.49 0 35.393 29.301 13.925 71.947l42.211 32.783c10.59-31.477 39.891-54.251 74.414-54.251"
       ></path>
-    </svg>
+    </SvgIcon>
   );
 };
 

@@ -24,15 +24,15 @@
     "errors": {
       "email": {
         "required": {
-          "text": "Email is required"
+          "text": "Please enter your email"
         },
         "pattern": {
-          "text": "Email is invalid"
+          "text": "This email is invalid"
         }
       },
       "password": {
         "required": {
-          "text": "Password is required"
+          "text": "Please enter your password"
         }
       }
     }

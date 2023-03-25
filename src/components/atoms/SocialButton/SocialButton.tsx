@@ -1,3 +1,4 @@
+import { Button, styled } from "@mui/material";
 import { useTranslation } from "react-i18next";
 
 interface SocialButtonProps
@@ -9,18 +10,27 @@ interface SocialButtonProps
   socialLabel: string;
 }
 
+const CustomButton = styled(Button)(({ theme }) => ({
+  backgroundColor: `rgba(28,182,171, 0.1)`,
+  border: `2px solid rgba(28,182,171, 0.4)`,
+  display: "flex",
+  gap: "1rem",
+  padding: ".6rem 0px",
+  boxShadow: "none",
+  "&:hover": {
+    backgroundColor: "rgba(28,182,171,0.4)",
+  },
+}));
+
 const SocialButton = (props: SocialButtonProps) => {
   const { Icon, socialLabel } = props;
   const { t } = useTranslation("index");
   return (
-    <button
-      className="border-primary rounded-md border-2 border-solid border-opacity-40 flex w-full bg-opacity-10 bg-primary justify-center gap-5 py-2"
-      {...props}
-    >
+    <CustomButton variant="contained">
       <Icon className="h-7 w-7" />
       {t("login.socialButton.text")}
       {t(`login.socialButton.${socialLabel}.brand`)}{" "}
-    </button>
+    </CustomButton>
   );
 };
 
