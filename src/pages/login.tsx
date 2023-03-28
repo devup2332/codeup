@@ -1,11 +1,11 @@
 import LoginContainer from "../containers/Login/Login.container";
-import LoginTemplate from "../templates/LoginTemplate/LoginTemplate";
+import AuthTemplate from "../templates/AuthTemplate/AuthTemplate";
 
 const LoginPage = () => {
   return (
-    <LoginTemplate>
+    <AuthTemplate>
       <LoginContainer />
-    </LoginTemplate>
+    </AuthTemplate>
   );
 };
 export default LoginPage;

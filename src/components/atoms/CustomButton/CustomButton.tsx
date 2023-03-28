@@ -1,3 +1,4 @@
+import { Button, styled, Typography } from "@mui/material";
 import React from "react";
 
 interface CustomButtonProps
@@ -8,15 +9,18 @@ interface CustomButtonProps
   children: React.ReactNode;
 }
 
+const StyledButton = styled(Button)({
+  padding: ".6rem 0",
+});
+
 const CustomButton = (props: CustomButtonProps) => {
-  const { children } = props;
+  const { children, type, className } = props;
   return (
-    <button
-      className="bg-primary py-3 flex justify-center items-center rounded-md text-white font-semibold text-sm"
-      {...props}
-    >
-      {children}
-    </button>
+    <StyledButton variant="contained" type={type} className={className}>
+      <Typography className="text-white" fontWeight="600">
+        {children}
+      </Typography>
+    </StyledButton>
   );
 };
 
