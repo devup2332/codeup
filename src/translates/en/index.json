@@ -36,5 +36,93 @@
         }
       }
     }
+  },
+  "register": {
+    "title": "Create an account in",
+    "brandTitle": "Code Up",
+    "signinText": {
+      "text": "Dont you have an account ? ",
+      "link": "Sign in"
+    },
+    "socialButtons": {
+      "text": "Sign up with",
+      "google": {
+        "brand": "Google"
+      },
+      "github": {
+        "brand": "Github"
+      }
+    },
+    "fields": {
+      "firstName": {
+        "label": "First Name",
+        "errors": {
+          "required": {
+            "text": "Please enter your First Name"
+          }
+        }
+      },
+      "lastName": {
+        "label": "Last Name",
+        "errors": {
+          "required": {
+            "text": "Please enter your Last Name"
+          }
+        }
+      },
+      "phone": {
+        "label": "Phone",
+        "errors": {
+          "required": {
+            "text": "Enter a valid phone number"
+          }
+        }
+      },
+      "email": {
+        "label": "Email",
+        "errors": {
+          "required": {
+            "text": "Enter your email"
+          },
+          "pattern": {
+            "text": "Please enter a valid email"
+          }
+        }
+      },
+      "code": {
+        "label": "Code",
+        "errors": {
+          "required": {
+            "text": "Plase select your contry code"
+          }
+        }
+      },
+      "password": {
+        "label": "Password",
+        "errors": {
+          "required": {
+            "text": "Password is required"
+          },
+          "invalid": {
+            "text": "Plase enter a valid password"
+          }
+        }
+      },
+      "password2": {
+        "label": "Repeat Password",
+        "errors": {
+          "required": {
+            "text": "Plase confirm your password"
+          },
+          "noEqual": {
+            "text": "Please enter the same password"
+          }
+        }
+      }
+    },
+    "buttonSubmit": {
+      "text": "Register"
+    },
+    "or": "Or"
   }
 }

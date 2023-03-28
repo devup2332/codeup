@@ -1,11 +1,14 @@
-import React from "react";
 import { createBrowserRouter } from "react-router-dom";
 import LoginPage from "./pages/login";
-const LoginPageLazy = React.lazy(() => import("./pages/login"));
+import RegisterPage from "./pages/register";
 
 export const router = createBrowserRouter([
   {
     path: "login",
     Component: LoginPage,
+  },
+  {
+    path: "register",
+    Component: RegisterPage,
   },
 ]);

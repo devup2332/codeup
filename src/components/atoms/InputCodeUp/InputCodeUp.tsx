@@ -6,6 +6,7 @@ import {
   InputAdornment,
   InputLabel,
   OutlinedInput,
+  styled,
 } from "@mui/material";
 
 interface InputCodeUpProps
@@ -21,6 +22,12 @@ interface InputCodeUpProps
   handleChangeVisibilityPassword?: () => void;
 }
 
+const CustomInput = styled(OutlinedInput)({
+  "& fieldset": {
+    borderColor: "black",
+  },
+});
+
 const InputCodeUp = (props: InputCodeUpProps) => {
   const {
     label,
@@ -30,11 +37,12 @@ const InputCodeUp = (props: InputCodeUpProps) => {
     field,
     validations,
     handleChangeVisibilityPassword,
+    className,
   } = props;
   return (
-    <FormControl>
+    <FormControl className={className}>
       <InputLabel>{label}</InputLabel>
-      <OutlinedInput
+      <CustomInput
         label={label}
         type={type}
         autoComplete="off"

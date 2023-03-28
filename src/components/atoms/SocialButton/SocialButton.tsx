@@ -5,12 +5,9 @@ interface SocialButtonProps
   extends React.DetailedHTMLProps<
     React.ButtonHTMLAttributes<HTMLButtonElement>,
     HTMLButtonElement
-  > {
-  Icon: (props: any) => JSX.Element;
-  socialLabel: string;
-}
+  > {}
 
-const CustomButton = styled(Button)(({ theme }) => ({
+const CustomButton = styled(Button)({
   backgroundColor: `rgba(28,182,171, 0.1)`,
   border: `2px solid rgba(28,182,171, 0.4)`,
   display: "flex",
@@ -20,16 +17,13 @@ const CustomButton = styled(Button)(({ theme }) => ({
   "&:hover": {
     backgroundColor: "rgba(28,182,171,0.4)",
   },
-}));
+});
 
 const SocialButton = (props: SocialButtonProps) => {
-  const { Icon, socialLabel } = props;
-  const { t } = useTranslation("index");
+  const { type, children } = props;
   return (
-    <CustomButton variant="contained">
-      <Icon className="h-7 w-7" />
-      {t("login.socialButton.text")}
-      {t(`login.socialButton.${socialLabel}.brand`)}{" "}
+    <CustomButton variant="contained" type={type}>
+      {children}
     </CustomButton>
   );
 };

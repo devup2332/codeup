@@ -40,17 +40,22 @@ const LoginContainer = () => {
             <span>{t("login.title")}</span>
             <span className="font-bold text-primary">{t("login.brand")}</span>
           </h1>
-
           <p className="text-center">
             {t("login.registerText.text")}{" "}
             <Link to="/register" className="font-bold text-primary">
               {t("login.registerText.link")}
             </Link>
           </p>
-
-          <SocialButton Icon={IconGithub} type="button" socialLabel="github" />
-          <SocialButton Icon={IconGoogle} type="button" socialLabel="google" />
-
+          <SocialButton type="button">
+            <IconGithub className="h-7 w-7" />
+            {t("register.socialButtons.text")}
+            {t(`register.socialButtons.github.brand`)}
+          </SocialButton>
+          <SocialButton type="button">
+            <IconGoogle className="h-7 w-7" />
+            {t("register.socialButtons.text")}
+            {t(`register.socialButtons.github.brand`)}
+          </SocialButton>
           <p className="text-center font-bold">Or</p>
           <div className="grid gap-3">
             <InputCodeUp
@@ -96,11 +101,12 @@ const LoginContainer = () => {
                 t("login.errors.password.required.text")}
             </p>
           </div>
-
-          <Link to="/forgotpassword" className="text-primary font-semibold w-fit">
+          <Link
+            to="/forgotpassword"
+            className="text-primary font-semibold w-fit"
+          >
             {t("login.forgotPassword.text")}
           </Link>
-
           <CustomButton type="submit">
             {t("login.button.submitText")}
           </CustomButton>

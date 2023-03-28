@@ -14,9 +14,9 @@ const StyledButton = styled(Button)({
 });
 
 const CustomButton = (props: CustomButtonProps) => {
-  const { children, type } = props;
+  const { children, type, className } = props;
   return (
-    <StyledButton variant="contained" type="submit">
+    <StyledButton variant="contained" type={type} className={className}>
       <Typography className="text-white" fontWeight="600">
         {children}
       </Typography>
