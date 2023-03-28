@@ -6,14 +6,14 @@ import RegisterPage from "./pages/register";
 export const router = createBrowserRouter([
   {
     path: "",
-    Component: HomePage,
+    element: <HomePage />,
   },
   {
-    path: "login",
-    Component: LoginPage,
+    path: "/login",
+    element: <LoginPage />,
   },
   {
-    path: "register",
-    Component: RegisterPage,
+    path: "/register",
+    element: <RegisterPage />,
   },
 ]);
