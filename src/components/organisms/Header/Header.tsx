@@ -2,6 +2,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import SearchIcon from "@mui/icons-material/Search";
 import InventoryIcon from "@mui/icons-material/Inventory";
 import { useTranslation } from "react-i18next";
+import { IconButton } from "@mui/material";
 
 interface HomeHeaderProps {
 	openSidebar: boolean;
@@ -23,11 +24,13 @@ const HomeHeader = (props: HomeHeaderProps) => {
 				/>
 				<SearchIcon />
 			</div>
-			<MenuIcon
+			<IconButton
 				onClick={() => {
 					setOpenSidebar(true);
 				}}
-			/>
+			>
+				<MenuIcon />
+			</IconButton>
 		</header>
 	);
 };
