@@ -45,7 +45,6 @@ const RegisterContainer = () => {
 		try {
 			setLoading(true);
 			const { token, message } = await instance("/auth/register", "POST", data);
-			console.log({ token, message });
 			if (!token) {
 				setOpen(true);
 				setMessage(message);
@@ -61,10 +60,6 @@ const RegisterContainer = () => {
 		}
 	};
 
-	const handleError = () => {
-		console.log({ errors });
-	};
-
 	const loginGoogle = async () => {
 		window.location.href = "http://localhost:8000/auth/google/login";
 	};
@@ -74,7 +69,7 @@ const RegisterContainer = () => {
 			<div className="flex justify-center items-center xl:w-8/12 2xl:w-7/12 3xl:w-5/12">
 				<form
 					className="w-11/12 grid gap-7 max-w-md xl:max-w-4xl xl:grid-cols-2 xl:w-10/12 "
-					onSubmit={handleSubmit(registerUser, handleError)}
+					onSubmit={handleSubmit(registerUser)}
 				>
 					<Typography
 						fontSize={30}

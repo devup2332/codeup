@@ -7,6 +7,8 @@ import engLng from "./translates/en/index.json";
 import { router } from "./router";
 import { ThemeProvider } from "@mui/material";
 import { MaterialTheme } from "./theme";
+import { Provider as ReduxProvider } from "react-redux";
+import { store } from "./redux/store";
 
 i18n.init({
 	lng: "en",
@@ -18,9 +20,11 @@ i18n.init({
 	},
 });
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
-	<ThemeProvider theme={MaterialTheme}>
-		<I18nextProvider i18n={i18n}>
-			<RouterProvider router={router} />
-		</I18nextProvider>
-	</ThemeProvider>
+	<ReduxProvider store={store}>
+		<ThemeProvider theme={MaterialTheme}>
+			<I18nextProvider i18n={i18n}>
+				<RouterProvider router={router} />
+			</I18nextProvider>
+		</ThemeProvider>
+	</ReduxProvider>
 );

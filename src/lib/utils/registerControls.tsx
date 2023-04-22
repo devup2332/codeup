@@ -61,7 +61,6 @@ export const registerControls: Control[] = [
 						"/auth/validateEmail/" + val,
 						"GET"
 					);
-					console.log({ status });
 					if (status !== 0) return true;
 					return false;
 				},

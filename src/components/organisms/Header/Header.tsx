@@ -3,15 +3,12 @@ import SearchIcon from "@mui/icons-material/Search";
 import InventoryIcon from "@mui/icons-material/Inventory";
 import { useTranslation } from "react-i18next";
 import { IconButton } from "@mui/material";
+import { useAppDispatch } from "../../../redux/store";
+import { openSidebarAction } from "../../../redux/actions/components/openSidebarActions";
 
-interface HomeHeaderProps {
-	openSidebar: boolean;
-	setOpenSidebar: (state: boolean) => void;
-}
-
-const HomeHeader = (props: HomeHeaderProps) => {
+const HomeHeader = () => {
 	const { t } = useTranslation("index");
-	const { setOpenSidebar } = props;
+	const dispatch = useAppDispatch();
 	return (
 		<header className="flex justify-between items-center py-2 px-3 gap-2">
 			<InventoryIcon />
@@ -26,7 +23,7 @@ const HomeHeader = (props: HomeHeaderProps) => {
 			</div>
 			<IconButton
 				onClick={() => {
-					setOpenSidebar(true);
+					dispatch(openSidebarAction(true));
 				}}
 			>
 				<MenuIcon />

@@ -136,6 +136,13 @@
 			"searchbox": {
 				"text": "Search"
 			}
+		},
+		"banner": {
+			"title": "CodeUp",
+			"body": "Finds a lot of articles about of code and development apps"
+		},
+		"topics": {
+			"title": "Popular Topics"
 		}
 	}
 }
