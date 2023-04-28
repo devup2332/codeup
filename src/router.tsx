@@ -18,7 +18,7 @@ export const router = createBrowserRouter([
 		element: <RegisterPage />,
 	},
 	{
-		path: "/sso/auth/:token",
+		path: "/sso/auth?token=:token",
 		element: <SSOAuth />,
 	},
 ]);

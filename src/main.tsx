@@ -12,7 +12,7 @@ import { store } from "./redux/store";
 
 i18n.init({
 	lng: "en",
-	debug: true,
+	debug: false,
 	resources: {
 		en: {
 			index: engLng,

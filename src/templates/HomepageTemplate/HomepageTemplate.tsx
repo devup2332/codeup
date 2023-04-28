@@ -1,4 +1,4 @@
-import { HomeHeader, HomeSidebar } from "../components/organisms";
+import { HomeHeader, HomeSidebar } from "../../components/organisms";
 
 interface HomeTemplateProps {
 	children: JSX.Element;

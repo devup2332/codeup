@@ -26,7 +26,6 @@ const HomeSidebar = () => {
 			open={openSidebar}
 			anchor="bottom"
 			onClose={handleCloseDrawer}
-			swipeAreaWidth={56}
 			onOpen={handleOpenDrawer}
 		>
 			<Box>

@@ -1,5 +1,5 @@
 import HomeContainer from "../containers/Homepage/Homepage.container";
-import HomepageTemplate from "../templates/HomepageTemplate";
+import HomepageTemplate from "../templates/HomepageTemplate/HomepageTemplate";
 
 const HomePage = () => {
 	return (
