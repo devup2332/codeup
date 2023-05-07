@@ -17,8 +17,9 @@ import {
 } from "../../components/atoms/Icons";
 import countryCodes from "../../lib/utils/countryCodes";
 import { registerControls } from "../../lib/utils/registerControls";
-import RegisterImage from "../../assets/register.jpg";
 import { instance } from "../../lib/utils/api/instance";
+import WaveLogin from "../../assets/wave.png";
+import { environments } from "../../environemts";
 
 const RegisterContainer = () => {
 	const { t } = useTranslation("index");
@@ -61,25 +62,22 @@ const RegisterContainer = () => {
 	};
 
 	const loginGoogle = async () => {
-		window.location.href = "http://localhost:8000/auth/google/login";
+		window.location.href = `${environments.API_URL}/auth/google/login`;
 	};
 
 	return (
-		<div className="xl:flex">
-			<div className="flex justify-center items-center xl:w-8/12 2xl:w-7/12 3xl:w-5/12">
+		<div>
+			<div className="flex justify-center w-full h-screen items-center ">
 				<form
-					className="w-11/12 grid gap-7 max-w-md xl:max-w-4xl xl:grid-cols-2 xl:w-10/12 "
+					className="w-11/12 grid gap-7 max-w-3xl xl:grid-cols-2 xl:w-10/12 -translate-y-20"
 					onSubmit={handleSubmit(registerUser)}
 				>
-					<Typography
-						fontSize={30}
-						className="text-center xl:col-start-1 xl:col-end-3"
-					>
+					<p className="text-center xl:col-start-1 text-3xl xl:text-5xl xl:col-end-3">
 						{t("register.title")}{" "}
 						<span className="text-primary font-bold">
 							{t("register.brandTitle")}
 						</span>
-					</Typography>
+					</p>
 					<Typography className="text-center xl:col-start-1 xl:col-end-3">
 						{t("register.signinText.text")}
 						<Link to="/login" className="text-primary font-bold">
@@ -100,13 +98,13 @@ const RegisterContainer = () => {
 						</SocialButton>
 					</div>
 					<div className="text-center relative xl:col-start-1 xl:col-end-3">
-						<hr className="h-px w-full text-primary bg-primary" />
+						<div className="h-px w-full text-primary bg-primary" />
 						<span className="absolute bg-white px-3 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
 							{" "}
 							{t("register.or")}
 						</span>
 					</div>
-					<div className="grid gap-5 xl:grid-cols-6 xl:col-start-1 xl:col-end-3">
+					<div className="grid gap-7 xl:grid-cols-6 xl:col-start-1 xl:col-end-3">
 						{registerControls.map(
 							({ validations, label, name, type, className }, index) =>
 								name !== "code" ? (
@@ -136,14 +134,14 @@ const RegisterContainer = () => {
 											{errors[name] && (
 												<>
 													{errors[name]?.type === "required" && (
-														<p className="text-xs text-red-500 font-bold">
+														<p className="text-sm text-red-500 font-bold">
 															{t(
 																`register.fields.${name}.errors.required.text`
 															)}
 														</p>
 													)}
 													{errors[name]?.type === "noEqual" && (
-														<p className="text-xs text-red-500 font-bold">
+														<p className="text-sm text-red-500 font-bold">
 															{t(`register.fields.${name}.errors.noEqual.text`)}
 														</p>
 													)}
@@ -164,19 +162,19 @@ const RegisterContainer = () => {
 											{errors[name] && (
 												<>
 													{errors[name]?.type === "required" && (
-														<p className="text-xs text-red-500 font-bold">
+														<p className="text-sm text-red-500 font-bold">
 															{t(
 																`register.fields.${name}.errors.required.text`
 															)}
 														</p>
 													)}
 													{errors[name]?.type === "pattern" && (
-														<p className="text-xs text-red-500 font-bold">
+														<p className="text-sm text-red-500 font-bold">
 															{t(`register.fields.${name}.errors.pattern.text`)}
 														</p>
 													)}
 													{errors[name]?.type === "emailIsUsed" && (
-														<p className="text-xs text-red-500 font-bold">
+														<p className="text-sm text-red-500 font-bold">
 															{t(
 																`register.fields.${name}.errors.emailIsUsed.text`
 															)}
@@ -200,7 +198,7 @@ const RegisterContainer = () => {
 											}}
 										/>
 										{errors[name]?.type === "required" && (
-											<p className="text-xs text-red-500 font-bold">
+											<p className="text-sm text-red-500 font-bold">
 												{t(`register.fields.${name}.errors.required.text`)}
 											</p>
 										)}
@@ -212,18 +210,13 @@ const RegisterContainer = () => {
 							className="xl:col-start-1 xl:col-end-7 flex gap-5"
 							loading={loading}
 						>
-							Submit
+							Register
 						</CustomButton>
 					</div>
 				</form>
 			</div>
-			<div className="hidden xl:block xl:w-4/12 h-screen relative 2xl:w-5/12 3xl:w-7/12">
-				<img
-					src={RegisterImage}
-					className="w-full h-full object-cover"
-					alt=""
-				/>
-				<div className="w-full h-full bg-black bg-opacity-50 absolute top-0 left-0"></div>
+			<div className="absolute bottom-0 left-0 w-full max-h-40 xl:max-h-44 3xl:max-h-72 z-0">
+				<img src={WaveLogin} className="object-cover w-full h-full" alt="" />
 			</div>
 			<Snackbar
 				anchorOrigin={{ vertical: "bottom", horizontal: "center" }}

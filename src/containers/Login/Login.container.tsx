@@ -1,4 +1,4 @@
-import {  useState } from "react";
+import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Link, useNavigate } from "react-router-dom";
 import {
@@ -15,9 +15,9 @@ import {
 	IconShowPassword,
 } from "../../components/atoms/Icons";
 import { emailRex } from "../../lib/utils/reg";
-import LoginImage from "../../assets/login.jpg";
 import { Alert, Snackbar } from "@mui/material";
 import { instance } from "../../lib/utils/api/instance";
+import WaveLogin from "../../assets/wave.png";
 
 const LoginContainer = () => {
 	const { t } = useTranslation("index");
@@ -61,13 +61,13 @@ const LoginContainer = () => {
 		setOpen(false);
 	};
 	return (
-		<div className="xl:flex">
-			<div className="flex justify-center items-center h-screen xl:w-4/12 3xl:w-3/12">
+		<div className="relative">
+			<div className="flex relative justify-center items-center -translate-y-24 h-screen w-full z-10">
 				<form
-					className="grid gap-5 w-11/12 h-fit max-w-md xl:w-9/12"
+					className="grid gap-7 w-11/12 h-fit xl:max-w-md"
 					onSubmit={handleSubmit(loginUser)}
 				>
-					<h1 className="text-3xl text-center">
+					<h1 className="text-3xl xl:text-4xl text-center">
 						<span>{t("login.title")}</span>
 						<span className="font-bold text-primary">{t("login.brand")}</span>
 					</h1>
@@ -79,16 +79,23 @@ const LoginContainer = () => {
 					</p>
 					<SocialButton type="button">
 						<IconGithub className="h-7 w-7" />
-						{t("register.socialButtons.text")}
-						{t("register.socialButtons.github.brand")}
+						{t("login.socialButton.text")}
+						{t("login.socialButton.github.brand")}
 					</SocialButton>
 					<SocialButton type="button">
 						<IconGoogle className="h-7 w-7" />
-						{t("register.socialButtons.text")}
-						{t("register.socialButtons.github.brand")}
+						{t("login.socialButton.text")}
+						{t("login.socialButton.google.brand")}
 					</SocialButton>
-					<p className="text-center font-bold">Or</p>
-					<div className="grid gap-3">
+					<div className="text-center relative">
+						<div className="h-px w-full bg-primary" />
+						<span className="absolute bg-white px-3 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+							{" "}
+							{t("register.or")}
+						</span>
+					</div>
+
+					<div className="grid gap-5">
 						<InputCodeUp
 							register={register}
 							label="Email"
@@ -103,12 +110,12 @@ const LoginContainer = () => {
 						{errors.email && (
 							<>
 								{errors.email.type === "required" && (
-									<p className="text-red-400 font-bold">
+									<p className="text-red-400 text-sm font-bold">
 										{t("login.errors.email.required.text")}
 									</p>
 								)}
 								{errors.email.type === "pattern" && (
-									<p className="text-red-400 font-bold">
+									<p className="text-red-400 text-sm font-bold">
 										{t("login.errors.email.pattern.text")}
 									</p>
 								)}
@@ -127,7 +134,7 @@ const LoginContainer = () => {
 								required: true,
 							}}
 						/>
-						<p className="text-red-400 font-bold">
+						<p className="text-red-400 text-sm font-bold">
 							{errors.password?.type === "required" &&
 								t("login.errors.password.required.text")}
 						</p>
@@ -143,9 +150,8 @@ const LoginContainer = () => {
 					</CustomButton>
 				</form>
 			</div>
-			<div className="hidden xl:block relative h-screen w-8/12 3xl:w-9/12">
-				<div className="absolute w-full h-full bg-black bg-opacity-40" />
-				<img src={LoginImage} alt="" className="h-full w-full object-cover" />
+			<div className="absolute bottom-0 left-0 w-full xl:max-h-52 3xl:max-h-72 z-0">
+				<img src={WaveLogin} className="object-cover w-full h-full" alt="" />
 			</div>
 			<Snackbar
 				anchorOrigin={{ vertical: "bottom", horizontal: "center" }}

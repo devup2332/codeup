@@ -29,25 +29,6 @@ export const registerControls: Control[] = [
 		},
 	},
 	{
-		label: "Code",
-		name: "code",
-		type: "text",
-		className: "grid gap-2 xl:col-start-1 xl:col-end-4",
-		validations: {
-			required: true,
-		},
-	},
-	{
-		label: "Phone",
-		name: "phone",
-		type: "number",
-		className: "grid gap-2 xl:col-start-4 xl:col-end-7",
-		validations: {
-			required: true,
-		},
-	},
-
-	{
 		label: "Email",
 		name: "email",
 		type: "text",

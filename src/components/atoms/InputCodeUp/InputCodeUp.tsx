@@ -24,7 +24,8 @@ interface InputCodeUpProps
 
 const CustomInput = styled(OutlinedInput)({
 	"& fieldset": {
-		borderColor: "black",
+		borderColor: "rgba(0,0,0,0.2)",
+		borderRadius: "10px",
 	},
 });
 

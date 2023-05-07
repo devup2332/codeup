@@ -4,7 +4,7 @@ module.exports = {
 	theme: {
 		extend: {
 			colors: {
-				primary: "#23C0C0",
+				primary: "#26D481",
 			},
 			fontFamily: {
 				Montserrat: ["Montserrat"],

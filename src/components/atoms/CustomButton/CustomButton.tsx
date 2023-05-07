@@ -11,7 +11,9 @@ interface CustomButtonProps
 }
 
 const StyledButton = styled(Button)({
-	padding: ".6rem 0",
+	height: "50px",
+	borderRadius: "10px",
+	boxShadow: "none",
 });
 
 const CustomButton = (props: CustomButtonProps) => {

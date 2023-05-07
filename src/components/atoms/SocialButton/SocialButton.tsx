@@ -2,14 +2,15 @@ import { Button, styled } from "@mui/material";
 import { ButtonHTMLAttributes, DetailedHTMLProps } from "react";
 
 const CustomButton = styled(Button)({
-	backgroundColor: "rgba(28,182,171, 0.1)",
-	border: "2px solid rgba(28,182,171, 0.4)",
+	background: "#ffffff",
+	border: "1px solid rgba(0,0,0,0.2)",
 	display: "flex",
 	gap: "1rem",
-	padding: ".6rem 0px",
+	borderRadius: "10px",
 	boxShadow: "none",
+	height: "50px",
 	"&:hover": {
-		backgroundColor: "rgba(28,182,171,0.4)",
+		backgroundColor: "#ffffff",
 	},
 });
 
