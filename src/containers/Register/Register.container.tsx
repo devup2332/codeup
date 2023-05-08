@@ -66,156 +66,150 @@ const RegisterContainer = () => {
 	};
 
 	return (
-		<div>
-			<div className="flex justify-center w-full h-screen items-center ">
-				<form
-					className="w-11/12 grid gap-7 max-w-3xl xl:grid-cols-2 xl:w-10/12 -translate-y-20"
-					onSubmit={handleSubmit(registerUser)}
-				>
-					<p className="text-center xl:col-start-1 text-3xl xl:text-5xl xl:col-end-3">
-						{t("register.title")}{" "}
-						<span className="text-primary font-bold">
-							{t("register.brandTitle")}
-						</span>
-					</p>
-					<Typography className="text-center xl:col-start-1 xl:col-end-3">
-						{t("register.signinText.text")}
-						<Link to="/login" className="text-primary font-bold">
-							{t("register.signinText.link")}
-						</Link>
-					</Typography>
+		<div className="flex flex-wrap justify-center items-center h-screen">
+			<form
+				className="py-10 w-10/12 grid gap-5 md:w-9/12 md:max-w-3xl md:gap-7 xl:grid-cols-2 xl:w-10/12 xl:-translate-y-10"
+				onSubmit={handleSubmit(registerUser)}
+			>
+				<p className="text-center xl:col-start-1 text-3xl xl:text-5xl xl:col-end-3">
+					{t("register.title")}{" "}
+					<span className="text-primary font-bold">
+						{t("register.brandTitle")}
+					</span>
+				</p>
+				<Typography className="text-center xl:col-start-1 xl:col-end-3">
+					{t("register.signinText.text")}
+					<Link to="/login" className="text-primary font-bold">
+						{t("register.signinText.link")}
+					</Link>
+				</Typography>
 
-					<div className="grid gap-5 xl:col-start-1 xl:col-end-3 xl:grid-cols-2">
-						<SocialButton type="button">
-							<IconGithub className="h-7 w-7" />
-							{t("register.socialButtons.text")}
-							{t("register.socialButtons.github.brand")}
-						</SocialButton>
-						<SocialButton type="button" onClick={loginGoogle}>
-							<IconGoogle className="h-7 w-7" />
-							{t("register.socialButtons.text")}
-							{t("register.socialButtons.google.brand")}
-						</SocialButton>
-					</div>
-					<div className="text-center relative xl:col-start-1 xl:col-end-3">
-						<div className="h-px w-full text-primary bg-primary" />
-						<span className="absolute bg-white px-3 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-							{" "}
-							{t("register.or")}
-						</span>
-					</div>
-					<div className="grid gap-7 xl:grid-cols-6 xl:col-start-1 xl:col-end-3">
-						{registerControls.map(
-							({ validations, label, name, type, className }, index) =>
-								name !== "code" ? (
-									type === "password" ? (
-										<div className={className} key={index}>
-											<InputCodeUp
-												label={label}
-												type={showPass ? "text" : "password"}
-												field={name}
-												Icon={showPass ? IconNotShowPassword : IconShowPassword}
-												register={register}
-												validations={{
-													...validations,
-													validate: {
-														noEqual: (val: string) => {
-															if (name === "password") return true;
-															const pass = watch("password") as string;
-															if (pass === val) return true;
-															return false;
-														},
+				<div className="grid gap-5 md:gap-7 xl:col-start-1 xl:col-end-3 md:grid-cols-2">
+					<SocialButton type="button">
+						<IconGithub className="h-7 w-7" />
+						{t("register.socialButtons.text")}
+						{t("register.socialButtons.github.brand")}
+					</SocialButton>
+					<SocialButton type="button" onClick={loginGoogle}>
+						<IconGoogle className="h-7 w-7" />
+						{t("register.socialButtons.text")}
+						{t("register.socialButtons.google.brand")}
+					</SocialButton>
+				</div>
+				<div className="text-center relative xl:col-start-1 xl:col-end-3">
+					<div className="h-px w-full text-primary bg-primary" />
+					<span className="absolute bg-white px-3 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+						{" "}
+						{t("register.or")}
+					</span>
+				</div>
+				<div className="grid gap-5 md:gap-7 xl:grid-cols-6 xl:col-start-1 xl:col-end-3">
+					{registerControls.map(
+						({ validations, label, name, type, className }, index) =>
+							name !== "code" ? (
+								type === "password" ? (
+									<div className={className} key={index}>
+										<InputCodeUp
+											label={label}
+											type={showPass ? "text" : "password"}
+											field={name}
+											Icon={showPass ? IconNotShowPassword : IconShowPassword}
+											register={register}
+											validations={{
+												...validations,
+												validate: {
+													noEqual: (val: string) => {
+														if (name === "password") return true;
+														const pass = watch("password") as string;
+														if (pass === val) return true;
+														return false;
 													},
-												}}
-												handleChangeVisibilityPassword={() =>
-													setshowPass(!showPass)
-												}
-											/>
-											{errors[name] && (
-												<>
-													{errors[name]?.type === "required" && (
-														<p className="text-sm text-red-500 font-bold">
-															{t(
-																`register.fields.${name}.errors.required.text`
-															)}
-														</p>
-													)}
-													{errors[name]?.type === "noEqual" && (
-														<p className="text-sm text-red-500 font-bold">
-															{t(`register.fields.${name}.errors.noEqual.text`)}
-														</p>
-													)}
-												</>
-											)}
-										</div>
-									) : (
-										<div className={className} key={index}>
-											<InputCodeUp
-												label={label}
-												type={type}
-												field={name}
-												register={register}
-												validations={{
-													...validations,
-												}}
-											/>
-											{errors[name] && (
-												<>
-													{errors[name]?.type === "required" && (
-														<p className="text-sm text-red-500 font-bold">
-															{t(
-																`register.fields.${name}.errors.required.text`
-															)}
-														</p>
-													)}
-													{errors[name]?.type === "pattern" && (
-														<p className="text-sm text-red-500 font-bold">
-															{t(`register.fields.${name}.errors.pattern.text`)}
-														</p>
-													)}
-													{errors[name]?.type === "emailIsUsed" && (
-														<p className="text-sm text-red-500 font-bold">
-															{t(
-																`register.fields.${name}.errors.emailIsUsed.text`
-															)}
-														</p>
-													)}
-												</>
-											)}
-										</div>
-									)
+												},
+											}}
+											handleChangeVisibilityPassword={() =>
+												setshowPass(!showPass)
+											}
+										/>
+										{errors[name] && (
+											<>
+												{errors[name]?.type === "required" && (
+													<p className="text-sm text-red-500 font-bold">
+														{t(`register.fields.${name}.errors.required.text`)}
+													</p>
+												)}
+												{errors[name]?.type === "noEqual" && (
+													<p className="text-sm text-red-500 font-bold">
+														{t(`register.fields.${name}.errors.noEqual.text`)}
+													</p>
+												)}
+											</>
+										)}
+									</div>
 								) : (
 									<div className={className} key={index}>
-										<CustomSelect
-											options={countryCodes}
+										<InputCodeUp
 											label={label}
-											register={register}
+											type={type}
 											field={name}
-											value={code}
-											validations={validations}
-											handleChange={(value) => {
-												setCode(value);
+											register={register}
+											validations={{
+												...validations,
 											}}
 										/>
-										{errors[name]?.type === "required" && (
-											<p className="text-sm text-red-500 font-bold">
-												{t(`register.fields.${name}.errors.required.text`)}
-											</p>
+										{errors[name] && (
+											<>
+												{errors[name]?.type === "required" && (
+													<p className="text-sm text-red-500 font-bold">
+														{t(`register.fields.${name}.errors.required.text`)}
+													</p>
+												)}
+												{errors[name]?.type === "pattern" && (
+													<p className="text-sm text-red-500 font-bold">
+														{t(`register.fields.${name}.errors.pattern.text`)}
+													</p>
+												)}
+												{errors[name]?.type === "emailIsUsed" && (
+													<p className="text-sm text-red-500 font-bold">
+														{t(
+															`register.fields.${name}.errors.emailIsUsed.text`
+														)}
+													</p>
+												)}
+											</>
 										)}
 									</div>
 								)
-						)}
-						<CustomButton
-							type="submit"
-							className="xl:col-start-1 xl:col-end-7 flex gap-5"
-							loading={loading}
-						>
-							Register
-						</CustomButton>
-					</div>
-				</form>
-			</div>
-			<div className="absolute bottom-0 left-0 w-full max-h-40 xl:max-h-44 3xl:max-h-72 z-0">
+							) : (
+								<div className={className} key={index}>
+									<CustomSelect
+										options={countryCodes}
+										label={label}
+										register={register}
+										field={name}
+										value={code}
+										validations={validations}
+										handleChange={(value) => {
+											setCode(value);
+										}}
+									/>
+									{errors[name]?.type === "required" && (
+										<p className="text-sm text-red-500 font-bold">
+											{t(`register.fields.${name}.errors.required.text`)}
+										</p>
+									)}
+								</div>
+							)
+					)}
+					<CustomButton
+						type="submit"
+						className="xl:col-start-1 xl:col-end-7 flex gap-5"
+						loading={loading}
+					>
+						Register
+					</CustomButton>
+				</div>
+			</form>
+			<div className="hidden md:block absolute bottom-0 left-0 w-full max-h-40 xl:max-h-44 3xl:max-h-72 z-0">
 				<img src={WaveLogin} className="object-cover w-full h-full" alt="" />
 			</div>
 			<Snackbar
