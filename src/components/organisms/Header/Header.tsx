@@ -10,7 +10,7 @@ const HomeHeader = () => {
 	const { t } = useTranslation("index");
 	const dispatch = useAppDispatch();
 	return (
-		<header className="flex justify-between items-center py-2 px-3 gap-4">
+		<header className="flex justify-between items-center py-2 px-3 gap-4 max-w-xl m-auto">
 			<div className="p-2">
 				<InventoryIcon />
 			</div>

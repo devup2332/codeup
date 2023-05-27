@@ -141,7 +141,7 @@ const LoginContainer = () => {
 				<Link to="/forgotpassword" className="text-primary font-semibold w-fit">
 					{t("login.forgotPassword.text")}
 				</Link>
-				<CustomButton type="submit" loading={loading}>
+				<CustomButton variant="contained" type="submit" loading={loading}>
 					{t("login.button.submitText")}
 				</CustomButton>
 			</form>

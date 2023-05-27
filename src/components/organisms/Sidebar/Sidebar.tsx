@@ -48,7 +48,7 @@ const HomeSidebar = () => {
 				<li className="list-none flex items-center justify-center gap-10 py-3">
 					<div className="flex justify-between gap-5 items-center">
 						<Link to="/login">
-							<CustomButton className="w-28">
+							<CustomButton className="w-28" variant="contained">
 								{t("homepage.sidebar.buttons.signIn")}
 							</CustomButton>
 						</Link>

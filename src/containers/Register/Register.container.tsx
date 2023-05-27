@@ -204,6 +204,7 @@ const RegisterContainer = () => {
 						type="submit"
 						className="xl:col-start-1 xl:col-end-7 flex gap-5"
 						loading={loading}
+						variant="contained"
 					>
 						Register
 					</CustomButton>

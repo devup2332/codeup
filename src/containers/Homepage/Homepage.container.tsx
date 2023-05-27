@@ -34,7 +34,7 @@ const HomeContainer = () => {
 	return (
 		<div>
 			<img src={WaveHome} className="hidden fixed top-0 left-0 h-28" alt="" />
-			<div className="py-10 grid gap-5">
+			<div className="py-10 grid gap-5 max-w-md m-auto">
 				<Typography className="text-center" fontWeight={800} fontSize={32}>
 					{t("homepage.banner.title")}
 				</Typography>
@@ -45,7 +45,7 @@ const HomeContainer = () => {
 					{t("homepage.banner.button")}
 				</CustomButton>
 			</div>
-			<div className="py-3 px-2 grid gap-5">
+			<div className="py-3 px-2 grid gap-5 max-w-md md:max-w-none m-auto">
 				<Typography
 					className="text-primary text-center"
 					variant="h5"
@@ -60,6 +60,7 @@ const HomeContainer = () => {
 					scrollButtons="auto"
 					variant="scrollable"
 					allowScrollButtonsMobile
+					className="md:m-auto"
 				>
 					<Tab value={0} label="Web Development" />
 					<Tab value={1} label="Mobile Development" />
@@ -69,7 +70,7 @@ const HomeContainer = () => {
 				</Tabs>
 				<SwipeableViews index={value}>
 					<TabPanel
-						className="gap-5 grid w-11/12 m-auto"
+						className="gap-5 grid w-11/12 m-auto md:grid-cols-2"
 						value={value}
 						index={0}
 					>
