@@ -1,27 +1,25 @@
-import { Box, Tab, Tabs, Typography } from "@mui/material";
+import { Tab, Tabs, Typography } from "@mui/material";
 import SwipeableViews from "react-swipeable-views";
-import HomePageImage from "../../assets/homepage.jpg";
-import SearchIcon from "@mui/icons-material/Search";
 import { useTranslation } from "react-i18next";
 import { useState } from "react";
+import WaveHome from "../../assets/wave-home.png";
+import { CustomButton, HomeCard } from "../../components/atoms";
+import { cards } from "../../data";
 
 interface TabPanelProps {
 	children?: React.ReactNode;
 	dir?: string;
 	index: number;
 	value: number;
+	className?: string;
 }
 
 const TabPanel = (props: TabPanelProps) => {
-	const { children, value, index, ...other } = props;
+	const { children, value, index, className } = props;
 
 	return (
-		<div hidden={value !== index} {...other}>
-			{value === index && (
-				<Box sx={{ p: 3 }}>
-					<Typography>{children}</Typography>
-				</Box>
-			)}
+		<div hidden={value !== index} className={className}>
+			{value === index && children}
 		</div>
 	);
 };
@@ -35,27 +33,24 @@ const HomeContainer = () => {
 	};
 	return (
 		<div>
-			<div className="relative before:content-['] before:top-0 before:left-0 before:absolute before:w-full before:h-full before:bg-black before:bg-opacity-75">
-				<img src={HomePageImage} alt="" />
-				<div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-9/12 grid gap-4">
-					<Typography color="white" fontWeight="700">
-						{t("homepage.banner.title")}
-					</Typography>
-					<Typography variant="body1" color="white">
-						{t("homepage.banner.body")}
-					</Typography>
-					<div className="border border-black border-solid rounded-md px-3 py-1 flex justify-between items-center bg-white">
-						<input
-							type="text"
-							className="outline-none w-full"
-							placeholder={t("homepage.header.searchbox.text") || "Seacrh"}
-						/>
-						<SearchIcon />
-					</div>
-				</div>
+			<img src={WaveHome} className="hidden fixed top-0 left-0 h-28" alt="" />
+			<div className="py-10 grid gap-5">
+				<Typography className="text-center" fontWeight={800} fontSize={32}>
+					{t("homepage.banner.title")}
+				</Typography>
+				<Typography className="text-center">
+					{t("homepage.banner.body")}
+				</Typography>
+				<CustomButton className="w-48 justify-self-center" variant="contained">
+					{t("homepage.banner.button")}
+				</CustomButton>
 			</div>
-			<div className="py-3 px-2">
-				<Typography className="text-primary" variant="h5" fontWeight="600">
+			<div className="py-3 px-2 grid gap-5">
+				<Typography
+					className="text-primary text-center"
+					variant="h5"
+					fontWeight="600"
+				>
 					{t("homepage.topics.title")}
 				</Typography>
 				<Tabs
@@ -73,20 +68,26 @@ const HomeContainer = () => {
 					<Tab value={4} label="Python" />
 				</Tabs>
 				<SwipeableViews index={value}>
-					<TabPanel value={value} index={0}>
-						Panel 1
+					<TabPanel
+						className="gap-5 grid w-11/12 m-auto"
+						value={value}
+						index={0}
+					>
+						{cards.map((c, index) => (
+							<HomeCard {...c} key={index} />
+						))}
 					</TabPanel>
 					<TabPanel value={value} index={1}>
-						Panel 2
+						Panel 1
 					</TabPanel>
 					<TabPanel value={value} index={2}>
-						Panel 3
+						Panel 2
 					</TabPanel>
 					<TabPanel value={value} index={3}>
-						Panel 4
+						Panel 3
 					</TabPanel>
 					<TabPanel value={value} index={4}>
-						Panel 5
+						Panel 4
 					</TabPanel>
 				</SwipeableViews>
 			</div>

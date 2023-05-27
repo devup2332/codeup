@@ -8,6 +8,7 @@ interface CustomButtonProps
 	> {
 	children: React.ReactNode;
 	loading?: boolean;
+	variant: "text" | "outlined" | "contained" | undefined;
 }
 
 const StyledButton = styled(Button)({
@@ -17,15 +18,23 @@ const StyledButton = styled(Button)({
 });
 
 const CustomButton = (props: CustomButtonProps) => {
-	const { children, type, className, loading } = props;
+	const { children, type, className, loading, variant } = props;
 	return (
-		<StyledButton variant="contained" type={type} className={className}>
+		<StyledButton
+			variant={variant || "contained"}
+			type={type}
+			className={className}
+		>
 			{loading && (
 				<CircularProgress size="25px" color="inherit" className="text-white" />
 			)}
-			<Typography className="text-white" fontWeight="600">
-				{children}
-			</Typography>
+			{variant === "contained" || !variant ? (
+				<Typography className="text-white" fontWeight="600">
+					{children}
+				</Typography>
+			) : (
+				children
+			)}
 		</StyledButton>
 	);
 };

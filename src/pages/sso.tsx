@@ -4,7 +4,6 @@ import { useEffect } from "react";
 const SSOAuth = () => {
 	const params = useParams();
 	const { token } = params;
-	console.log({ params });
 
 	useEffect(() => {
 		localStorage.setItem(

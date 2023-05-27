@@ -10,13 +10,15 @@ const HomeHeader = () => {
 	const { t } = useTranslation("index");
 	const dispatch = useAppDispatch();
 	return (
-		<header className="flex justify-between items-center py-2 px-3 gap-2">
-			<InventoryIcon />
+		<header className="flex justify-between items-center py-2 px-3 gap-4">
+			<div className="p-2">
+				<InventoryIcon />
+			</div>
 
 			<div className="border border-black border-solid rounded-md px-3 py-1 flex justify-between items-center">
 				<input
 					type="text"
-					className="outline-none"
+					className="outline-none w-full"
 					placeholder={t("homepage.header.searchbox.text") || "Seacrh"}
 				/>
 				<SearchIcon />

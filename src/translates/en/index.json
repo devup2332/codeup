@@ -129,6 +129,12 @@
 		"or": "Or"
 	},
 	"homepage": {
+		"sidebar": {
+			"buttons": {
+				"signIn": "Sign In",
+				"signUp": "Sign Up"
+			}
+		},
 		"header": {
 			"brand": {
 				"text": "Codeup"
@@ -139,7 +145,8 @@
 		},
 		"banner": {
 			"title": "CodeUp",
-			"body": "Finds a lot of articles about of code and development apps"
+			"body": "Finds a lot of articles about of code and development apps",
+			"button": "Subscribe"
 		},
 		"topics": {
 			"title": "Popular Topics"

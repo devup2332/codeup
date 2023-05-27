@@ -5,9 +5,10 @@ import { openSidebarAction } from "../../../redux/actions/components/openSidebar
 import { useAppDispatch, useAppSelector } from "../../../redux/store";
 import { useState } from "react";
 import { CustomButton } from "../../atoms";
-import Typography from "@mui/material/Typography";
+import { useTranslation } from "react-i18next";
 
 const HomeSidebar = () => {
+	const { t } = useTranslation("index");
 	const { openSidebar } = useAppSelector((state) => state.components);
 	const dispatch = useAppDispatch();
 	const [theme, setTheme] = useState(true);
@@ -48,10 +49,10 @@ const HomeSidebar = () => {
 					<div className="flex justify-between gap-5 items-center">
 						<Link to="/login">
 							<CustomButton className="w-28">
-								<Typography component="span">Sing In</Typography>
+								{t("homepage.sidebar.buttons.signIn")}
 							</CustomButton>
 						</Link>
-						|<Link to="/register">Sign Up</Link>
+						|<Link to="/register">{t("homepage.sidebar.buttons.signUp")}</Link>
 					</div>
 					<button
 						className="bg-gray-200 rounded-full w-14 h-7 relative "
