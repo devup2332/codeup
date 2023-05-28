@@ -64,7 +64,7 @@ const HomeContainer = () => {
 				</div>
 				<IconHomePage className="hidden lg:block w-96 xl:w-6/12" />
 			</div>
-			<div className="grid gap-5 max-w-md md:max-w-4xl m-auto xl:max-w-6xl xl:gap-10">
+			<div className="grid gap-5 max-w-md md:max-w-4xl m-auto xl:max-w-6xl 2xl:max-w-7xl xl:gap-10">
 				<Typography
 					className="text-primary text-center xl:text-left"
 					fontSize={xlMatches ? 30 : 25}
@@ -89,7 +89,7 @@ const HomeContainer = () => {
 				</Tabs>
 				<SwipeableViews index={value}>
 					<TabPanel
-						className="gap-10 grid max-w-2xl lg:max-w-4xl m-auto md:grid-cols-2 xl:grid-cols-3 xl:max-w-none"
+						className="gap-10 grid w-11/12  lg:w-full lg:max-w-4xl m-auto md:grid-cols-2 xl:grid-cols-3 xl:max-w-none"
 						value={value}
 						index={0}
 					>

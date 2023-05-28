@@ -5,6 +5,7 @@ import { openSidebarAction } from "../../../redux/actions/components/openSidebar
 import { useAppDispatch, useAppSelector } from "../../../redux/store";
 import { CustomButton, SwitchTheme } from "../../atoms";
 import { useTranslation } from "react-i18next";
+import { Typography } from "@mui/material";
 
 const HomeSidebar = () => {
 	const { t } = useTranslation("index");
@@ -44,10 +45,10 @@ const HomeSidebar = () => {
 					<div className="flex justify-between gap-5 items-center">
 						<Link to="/login">
 							<CustomButton className="w-28" variant="contained">
-								{t("homepage.sidebar.buttons.signIn")}
+								<Typography className="py-1 text-white" fontWeight={700}> {t("homepage.sidebar.buttons.signIn")}</Typography>
 							</CustomButton>
 						</Link>
-						|<Link to="/register">{t("homepage.sidebar.buttons.signUp")}</Link>
+						|<Link to="/register" className="font-bold">{t("homepage.sidebar.buttons.signUp")}</Link>
 					</div>
 					<SwitchTheme />
 				</li>
