@@ -15,7 +15,7 @@ import {
 	IconShowPassword,
 } from "../../components/atoms/Icons";
 import { emailRex } from "../../lib/utils/reg";
-import { Alert, Snackbar } from "@mui/material";
+import { Alert, Snackbar, Typography } from "@mui/material";
 import { instance } from "../../lib/utils/api/instance";
 import WaveLogin from "../../assets/wave.png";
 
@@ -142,7 +142,10 @@ const LoginContainer = () => {
 					{t("login.forgotPassword.text")}
 				</Link>
 				<CustomButton variant="contained" type="submit" loading={loading}>
-					{t("login.button.submitText")}
+					<Typography className="text-white py-1" fontWeight={700}>
+						{" "}
+						{t("login.button.submitText")}
+					</Typography>
 				</CustomButton>
 			</form>
 			<div className="hidden md:block md:absolute md:bottom-0 md:left-0 md:w-full xl:max-h-52 3xl:max-h-72 z-0">

@@ -6,7 +6,7 @@ interface HomeTemplateProps {
 
 const HomepageTemplate = ({ children }: HomeTemplateProps) => {
 	return (
-		<div>
+		<div className="font-Montserrat relative">
 			<HomeHeader />
 			{children}
 			<HomeSidebar />

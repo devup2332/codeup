@@ -1,4 +1,4 @@
-import { Button, CircularProgress, styled, Typography } from "@mui/material";
+import { Button, CircularProgress, styled } from "@mui/material";
 import React from "react";
 
 interface CustomButtonProps
@@ -9,32 +9,29 @@ interface CustomButtonProps
 	children: React.ReactNode;
 	loading?: boolean;
 	variant: "text" | "outlined" | "contained" | undefined;
+	background?: string;
+	textColor?: string;
+	style?: React.CSSProperties;
 }
 
 const StyledButton = styled(Button)({
-	height: "50px",
 	borderRadius: "10px",
 	boxShadow: "none",
 });
 
 const CustomButton = (props: CustomButtonProps) => {
-	const { children, type, className, loading, variant } = props;
+	const { children, type, className, loading, variant, style } = props;
 	return (
 		<StyledButton
-			variant={variant || "contained"}
+			variant={variant}
 			type={type}
 			className={className}
+			style={style}
 		>
 			{loading && (
 				<CircularProgress size="25px" color="inherit" className="text-white" />
 			)}
-			{variant === "contained" || !variant ? (
-				<Typography className="text-white" fontWeight="600">
-					{children}
-				</Typography>
-			) : (
-				children
-			)}
+			{children}
 		</StyledButton>
 	);
 };

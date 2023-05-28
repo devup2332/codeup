@@ -3,15 +3,13 @@ import SwipeableDrawer from "@mui/material/SwipeableDrawer";
 import { Link } from "react-router-dom";
 import { openSidebarAction } from "../../../redux/actions/components/openSidebarActions";
 import { useAppDispatch, useAppSelector } from "../../../redux/store";
-import { useState } from "react";
-import { CustomButton } from "../../atoms";
+import { CustomButton, SwitchTheme } from "../../atoms";
 import { useTranslation } from "react-i18next";
 
 const HomeSidebar = () => {
 	const { t } = useTranslation("index");
 	const { openSidebar } = useAppSelector((state) => state.components);
 	const dispatch = useAppDispatch();
-	const [theme, setTheme] = useState(true);
 	const handleCloseDrawer = () => {
 		dispatch(openSidebarAction(false));
 	};
@@ -19,9 +17,6 @@ const HomeSidebar = () => {
 		dispatch(openSidebarAction(true));
 	};
 
-	const handleChangeTheme = () => {
-		setTheme(!theme);
-	};
 	return (
 		<SwipeableDrawer
 			open={openSidebar}
@@ -54,17 +49,7 @@ const HomeSidebar = () => {
 						</Link>
 						|<Link to="/register">{t("homepage.sidebar.buttons.signUp")}</Link>
 					</div>
-					<button
-						className="bg-gray-200 rounded-full w-14 h-7 relative "
-						onClick={handleChangeTheme}
-					>
-						<div
-							className="w-5 h-5 bg-white rounded-full absolute top-1/2 -translate-y-1/2 transition-all"
-							style={{
-								left: theme ? "5px" : "32px",
-							}}
-						></div>
-					</button>
+					<SwitchTheme />
 				</li>
 			</Box>
 		</SwipeableDrawer>

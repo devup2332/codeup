@@ -206,7 +206,7 @@ const RegisterContainer = () => {
 						loading={loading}
 						variant="contained"
 					>
-						Register
+						<Typography className="py-1 text-white" fontWeight={600}>Register</Typography>
 					</CustomButton>
 				</div>
 			</form>

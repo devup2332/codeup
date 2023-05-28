@@ -20,7 +20,7 @@ const HomeCard = ({ title, description, image_url }: HomeCardProps) => {
 						? `${description.substring(0, 80)} ...`
 						: description.length}
 				</Typography>
-				<CustomButton className="justify-self-start text-primary" variant="text">Read Post</CustomButton>
+				<CustomButton className="justify-self-start" variant="text">Read Post</CustomButton>
 			</div>
 		</div>
 	);

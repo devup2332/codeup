@@ -5,6 +5,9 @@ export const MaterialTheme = createTheme({
 		primary: {
 			main: "#26D481",
 		},
+		secondary: {
+			main: "#ffffff",
+		},
 	},
 	typography: {
 		fontFamily: ["Montserrat"].join(","),

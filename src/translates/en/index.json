@@ -133,6 +133,11 @@
 			"buttons": {
 				"signIn": "Sign In",
 				"signUp": "Sign Up"
+			},
+			"options": {
+				"home": "Home",
+				"topics": "Topics",
+				"users": "Users"
 			}
 		},
 		"header": {
@@ -149,7 +154,7 @@
 			"button": "Subscribe"
 		},
 		"topics": {
-			"title": "Popular Topics"
+			"title": "Our Topics"
 		}
 	}
 }
