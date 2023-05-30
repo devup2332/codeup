@@ -18,15 +18,14 @@ const StyledButton = styled(Button)({
 });
 
 const CustomButton = (props: CustomButtonProps) => {
-	const { children, type, className, loading, variant, style, ...others } =
-		props;
+	const { children, type, className, loading, variant, style, onClick } = props;
 	return (
 		<StyledButton
 			variant={variant}
 			type={type}
 			className={className}
 			style={style}
-			{...others}
+			onClick={onClick}
 		>
 			{loading && (
 				<CircularProgress size="25px" color="inherit" className="text-white" />
