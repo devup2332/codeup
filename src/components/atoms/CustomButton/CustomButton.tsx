@@ -9,8 +9,6 @@ interface CustomButtonProps
 	children: React.ReactNode;
 	loading?: boolean;
 	variant: "text" | "outlined" | "contained" | undefined;
-	background?: string;
-	textColor?: string;
 	style?: React.CSSProperties;
 }
 
@@ -20,13 +18,15 @@ const StyledButton = styled(Button)({
 });
 
 const CustomButton = (props: CustomButtonProps) => {
-	const { children, type, className, loading, variant, style } = props;
+	const { children, type, className, loading, variant, style, ...others } =
+		props;
 	return (
 		<StyledButton
 			variant={variant}
 			type={type}
 			className={className}
 			style={style}
+			{...others}
 		>
 			{loading && (
 				<CircularProgress size="25px" color="inherit" className="text-white" />

@@ -6,6 +6,7 @@ import WaveHome from "../../assets/wave-home.png";
 import { CustomButton, HomeCard } from "../../components/atoms";
 import { cards } from "../../data";
 import { IconHomePage } from "../../components/atoms/Icons";
+import { useNavigate } from "react-router-dom";
 
 interface TabPanelProps {
 	children?: React.ReactNode;
@@ -27,6 +28,7 @@ const TabPanel = (props: TabPanelProps) => {
 
 const HomeContainer = () => {
 	const [value, setValue] = useState(0);
+	const navigate = useNavigate();
 	const { t } = useTranslation("index");
 	const xlMatches = useMediaQuery("(min-width: 1280px)");
 
@@ -55,6 +57,7 @@ const HomeContainer = () => {
 					<CustomButton
 						className="w-48 justify-self-center lg:justify-self-start"
 						variant="contained"
+						onClick={() => navigate("/register")}
 					>
 						<Typography className="py-1 text-white" fontWeight={700}>
 							{" "}

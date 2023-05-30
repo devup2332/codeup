@@ -7,9 +7,11 @@ import { useAppDispatch } from "../../../redux/store";
 import { openSidebarAction } from "../../../redux/actions/components/openSidebarActions";
 import { Link } from "react-router-dom";
 import { CustomButton, SwitchTheme } from "../../atoms";
+import { useNavigate } from "react-router-dom";
 
 const HomeHeader = () => {
 	const lgMatches = useMediaQuery("(min-width:1024px)");
+	const navigate = useNavigate();
 	const { t } = useTranslation("index");
 	const dispatch = useAppDispatch();
 	return (
@@ -52,6 +54,7 @@ const HomeHeader = () => {
 					<CustomButton
 						variant="contained"
 						color="primary"
+						onClick={() => navigate("/login")}
 						style={{
 							background: "white",
 						}}
@@ -67,6 +70,7 @@ const HomeHeader = () => {
 					</CustomButton>
 					<CustomButton
 						variant="text"
+						onClick={() => navigate("/register")}
 						style={{
 							color: "white",
 						}}
