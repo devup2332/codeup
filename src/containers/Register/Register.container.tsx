@@ -18,7 +18,6 @@ import {
 import countryCodes from "../../lib/utils/countryCodes";
 import { registerControls } from "../../lib/utils/registerControls";
 import { instance } from "../../lib/utils/api/instance";
-import WaveLogin from "../../assets/wave.png";
 import { environments } from "../../environemts";
 
 const RegisterContainer = () => {
@@ -210,9 +209,6 @@ const RegisterContainer = () => {
 					</CustomButton>
 				</div>
 			</form>
-			<div className="hidden md:block absolute bottom-0 left-0 w-full max-h-40 xl:max-h-44 3xl:max-h-72 z-0">
-				<img src={WaveLogin} className="object-cover w-full h-full" alt="" />
-			</div>
 			<Snackbar
 				anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
 				open={open}

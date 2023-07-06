@@ -137,7 +137,8 @@
 			"options": {
 				"home": "Home",
 				"topics": "Topics",
-				"users": "Users"
+				"users": "Users",
+				"search": "Search"
 			}
 		},
 		"header": {
@@ -149,7 +150,7 @@
 			}
 		},
 		"banner": {
-			"title": "CodeUp",
+			"title": "If you love coding so you are in the right place",
 			"body": "Finds a lot of articles about of code and development apps",
 			"button": "Subscribe"
 		},

@@ -17,7 +17,6 @@ import {
 import { emailRex } from "../../lib/utils/reg";
 import { Alert, Snackbar, Typography } from "@mui/material";
 import { instance } from "../../lib/utils/api/instance";
-import WaveLogin from "../../assets/wave.png";
 
 const LoginContainer = () => {
 	const { t } = useTranslation("index");
@@ -148,9 +147,6 @@ const LoginContainer = () => {
 					</Typography>
 				</CustomButton>
 			</form>
-			<div className="hidden md:block md:absolute md:bottom-0 md:left-0 md:w-full xl:max-h-52 3xl:max-h-72 z-0">
-				<img src={WaveLogin} className="object-cover w-full h-full" alt="" />
-			</div>
 			<Snackbar
 				anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
 				open={open}

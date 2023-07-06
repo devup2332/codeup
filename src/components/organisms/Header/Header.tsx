@@ -1,12 +1,11 @@
 import MenuIcon from "@mui/icons-material/Menu";
-import SearchIcon from "@mui/icons-material/Search";
 import InventoryIcon from "@mui/icons-material/Inventory";
 import { useTranslation } from "react-i18next";
 import { IconButton, Typography, useMediaQuery } from "@mui/material";
 import { useAppDispatch } from "../../../redux/store";
 import { openSidebarAction } from "../../../redux/actions/components/openSidebarActions";
 import { Link } from "react-router-dom";
-import { CustomButton, SwitchTheme } from "../../atoms";
+import { CustomButton } from "../../atoms";
 import { useNavigate } from "react-router-dom";
 
 const HomeHeader = () => {
@@ -19,24 +18,16 @@ const HomeHeader = () => {
 			<div className="p-2 lg:hidden">
 				<InventoryIcon />
 			</div>
-			<div className="flex gap-5 items-center xl:gap-10 ">
+			<div className="flex gap-5 items-center xl:gap-10 w-7/12 justify-between">
 				<Typography
 					className="hidden lg:block text-white"
 					fontWeight={800}
 					fontSize={24}
+					color="primary"
 				>
 					{t("homepage.header.brand.text")}
 				</Typography>
-
-				<div className="border border-black border-solid rounded-md px-3 py-2 flex justify-between items-center lg:bg-white lg:border-none">
-					<input
-						type="text"
-						className="outline-none w-full bg-transparent"
-						placeholder={t("homepage.header.searchbox.text") || "Seacrh"}
-					/>
-					<SearchIcon />
-				</div>
-				<ul className="hidden lg:flex text-white gap-5 lg:text-sm xl:gap-10">
+				<ul className="hidden lg:flex text-black gap-5 lg:text-sm xl:gap-10">
 					<li className="font-bold">
 						<Link to="/">{t("homepage.sidebar.options.home")}</Link>
 					</li>
@@ -46,17 +37,20 @@ const HomeHeader = () => {
 					<li>
 						<Link to="/users">{t("homepage.sidebar.options.users")}</Link>
 					</li>
+					<li>
+						<Link to="/search">{t("homepage.sidebar.options.search")}</Link>
+					</li>
 				</ul>
 			</div>
 			{lgMatches ? (
 				<div className="flex gap-5 items-center xl:gap-10">
-					<SwitchTheme />
 					<CustomButton
 						variant="contained"
 						color="primary"
 						onClick={() => navigate("/login")}
 						style={{
 							background: "white",
+							boxShadow: "0px 0px 5px 0px rgba(0,0,0,0.3)",
 						}}
 					>
 						<Typography
@@ -72,7 +66,7 @@ const HomeHeader = () => {
 						variant="text"
 						onClick={() => navigate("/register")}
 						style={{
-							color: "white",
+							color: "black",
 						}}
 					>
 						<Typography fontWeight={700}> Sign Up</Typography>

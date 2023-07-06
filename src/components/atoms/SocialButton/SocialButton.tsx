@@ -3,6 +3,7 @@ import { ButtonHTMLAttributes, DetailedHTMLProps } from "react";
 
 const CustomButton = styled(Button)({
 	background: "#ffffff",
+	color: "#000000",
 	border: "1px solid rgba(0,0,0,0.2)",
 	display: "flex",
 	gap: "1rem",
