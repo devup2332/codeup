@@ -47,12 +47,15 @@ const HomeContainer = () => {
 						{t("homepage.banner.title")}
 					</Typography>
 					<CustomButton
-						className="w-48 justify-self-center hidden lg:justify-self-start"
+						className="w-40 justify-self-center hidden lg:justify-self-start"
 						variant="contained"
 						onClick={() => navigate("/register")}
 					>
-						<Typography className="py-1 text-white" fontWeight={700}>
-							{" "}
+						<Typography
+							className="py-1 text-white"
+							fontWeight={700}
+							fontSize={14}
+						>
 							{t("homepage.banner.button")}
 						</Typography>
 					</CustomButton>
@@ -60,7 +63,7 @@ const HomeContainer = () => {
 			</div>
 			<div className="grid gap-5 max-w-md md:max-w-4xl m-auto xl:max-w-6xl 2xl:max-w-7xl xl:gap-10">
 				<Typography
-					className="text-primary text-center xl:text-left"
+					className="text-primary text-center"
 					fontSize={xlMatches ? 30 : 25}
 					fontWeight="800"
 				>
@@ -73,7 +76,7 @@ const HomeContainer = () => {
 					scrollButtons="auto"
 					variant="scrollable"
 					allowScrollButtonsMobile
-					className="md:m-auto xl:m-0"
+					className="m-auto"
 				>
 					<Tab value={0} label="Web Development" />
 					<Tab value={1} label="Mobile Development" />
