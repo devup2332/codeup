@@ -63,7 +63,7 @@ const HomeContainer = () => {
 			</div>
 			<div className="grid gap-5 max-w-md md:max-w-4xl m-auto xl:max-w-6xl 2xl:max-w-7xl xl:gap-10">
 				<Typography
-					className="text-primary text-center"
+					className="text-center"
 					fontSize={xlMatches ? 30 : 25}
 					fontWeight="800"
 				>
