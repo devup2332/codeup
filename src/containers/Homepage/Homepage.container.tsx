@@ -1,11 +1,14 @@
 import { Tab, Tabs, Typography, useMediaQuery } from "@mui/material";
 import SwipeableViews from "react-swipeable-views";
 import { useTranslation } from "react-i18next";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { CustomButton, HomeCard } from "../../components/atoms";
 import { cards } from "../../data";
 import { IconHomePage } from "../../components/atoms/Icons";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
+import { instance } from "../../lib/utils/api/instance";
+import { useAppDispatch } from "../../redux/store";
+import { fetchAuthUser } from "../../redux/actions/userAuth/fetchUserAuth";
 
 interface TabPanelProps {
 	children?: React.ReactNode;
@@ -30,10 +33,28 @@ const HomeContainer = () => {
 	const navigate = useNavigate();
 	const { t } = useTranslation("index");
 	const xlMatches = useMediaQuery("(min-width: 1280px)");
+	const dispatch = useAppDispatch();
+	const [params] = useSearchParams();
 
 	const handleTabsChange = (e: React.SyntheticEvent, newValue: number) => {
 		setValue(newValue);
 	};
+
+	const validateToken = async () => {
+		const token = params.get("token");
+		if (token) {
+			const { status, userId } = await instance("/auth/validateToken", "POST", {
+				token,
+			});
+			if (status && userId) {
+				dispatch(fetchAuthUser(userId)).catch((e) => console.err({ e }));
+			}
+		}
+	};
+
+	useEffect(() => {
+		validateToken();
+	}, []);
 	return (
 		<div>
 			<div className="py-10 max-w-md max-w-11/12 m-auto lg:flex lg:max-w-4xl gap-28 items-center justify-between xl:max-w-6xl 2xl:max-w-7xl">

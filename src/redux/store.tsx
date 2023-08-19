@@ -6,10 +6,12 @@ import {
 } from "react-redux/es/exports";
 
 import components from "./reducers/components/components.reducer";
+import userAuth from "./reducers/userAuth/userAuth.reducer";
 
 export const store = configureStore({
 	reducer: {
 		components,
+		userAuth,
 	},
 });
 

@@ -6,5 +6,5 @@ export const openSidebarAction = createAction(
 		return {
 			payload: opensidebar,
 		};
-	}
+	},
 );

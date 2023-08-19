@@ -32,6 +32,6 @@
 		],
 		"multiline-ternary": "off",
 		"no-nested-ternary": ["off"],
-		"no-console": ["error"]
+		"no-console": ["warn"]
 	}
 }

@@ -61,7 +61,8 @@ const RegisterContainer = () => {
 	};
 
 	const loginGoogle = async () => {
-		window.location.href = `${environments.API_URL}/auth/google/login`;
+		const url = `${environments.API_URL}/auth/google/login`;
+		window.location.href = url;
 	};
 
 	return (
@@ -170,7 +171,7 @@ const RegisterContainer = () => {
 												{errors[name]?.type === "emailIsUsed" && (
 													<p className="text-sm text-red-500 font-bold">
 														{t(
-															`register.fields.${name}.errors.emailIsUsed.text`
+															`register.fields.${name}.errors.emailIsUsed.text`,
 														)}
 													</p>
 												)}
@@ -197,7 +198,7 @@ const RegisterContainer = () => {
 										</p>
 									)}
 								</div>
-							)
+							),
 					)}
 					<CustomButton
 						type="submit"
@@ -205,7 +206,9 @@ const RegisterContainer = () => {
 						loading={loading}
 						variant="contained"
 					>
-						<Typography className="py-1 text-white" fontWeight={600}>Register</Typography>
+						<Typography className="py-1 text-white" fontWeight={600}>
+							Register
+						</Typography>
 					</CustomButton>
 				</div>
 			</form>
