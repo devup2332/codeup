@@ -47,7 +47,7 @@ const HomeContainer = () => {
 				token,
 			});
 			if (status && userId) {
-				dispatch(fetchAuthUser(userId)).catch((e) => console.err({ e }));
+				dispatch(fetchAuthUser(userId));
 			}
 		}
 	};

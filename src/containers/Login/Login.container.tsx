@@ -17,6 +17,7 @@ import {
 import { emailRex } from "../../lib/utils/reg";
 import { Alert, Snackbar, Typography } from "@mui/material";
 import { instance } from "../../lib/utils/api/instance";
+import { environments } from "../../environemts";
 
 const LoginContainer = () => {
 	const { t } = useTranslation("index");
@@ -53,6 +54,11 @@ const LoginContainer = () => {
 		}
 	};
 
+	const loginSocial = (service: string) => {
+		const url = `${environments.API_URL}/auth/${service}`;
+		window.location.href = url;
+	};
+
 	const handleClose = (_: React.SyntheticEvent | Event, reason?: string) => {
 		if (reason === "clickaway") {
 			return;
@@ -80,7 +86,12 @@ const LoginContainer = () => {
 					{t("login.socialButton.text")}
 					{t("login.socialButton.github.brand")}
 				</SocialButton>
-				<SocialButton type="button">
+				<SocialButton
+					type="button"
+					onClick={() => {
+						loginSocial("google");
+					}}
+				>
 					<IconGoogle className="h-7 w-7" />
 					{t("login.socialButton.text")}
 					{t("login.socialButton.google.brand")}

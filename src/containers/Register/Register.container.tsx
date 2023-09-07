@@ -60,8 +60,8 @@ const RegisterContainer = () => {
 		}
 	};
 
-	const loginGoogle = async () => {
-		const url = `${environments.API_URL}/auth/google/login`;
+	const registerSocial = async (service: string) => {
+		const url = `${environments.API_URL}/auth/${service}`;
 		window.location.href = url;
 	};
 
@@ -85,12 +85,12 @@ const RegisterContainer = () => {
 				</Typography>
 
 				<div className="grid gap-5 md:gap-7 xl:col-start-1 xl:col-end-3 md:grid-cols-2">
-					<SocialButton type="button">
+					<SocialButton type="button" onClick={() => registerSocial("github")}>
 						<IconGithub className="h-7 w-7" />
 						{t("register.socialButtons.text")}
 						{t("register.socialButtons.github.brand")}
 					</SocialButton>
-					<SocialButton type="button" onClick={loginGoogle}>
+					<SocialButton type="button" onClick={() => registerSocial("google")}>
 						<IconGoogle className="h-7 w-7" />
 						{t("register.socialButtons.text")}
 						{t("register.socialButtons.google.brand")}
@@ -171,7 +171,7 @@ const RegisterContainer = () => {
 												{errors[name]?.type === "emailIsUsed" && (
 													<p className="text-sm text-red-500 font-bold">
 														{t(
-															`register.fields.${name}.errors.emailIsUsed.text`,
+															`register.fields.${name}.errors.emailIsUsed.text`
 														)}
 													</p>
 												)}
@@ -198,7 +198,7 @@ const RegisterContainer = () => {
 										</p>
 									)}
 								</div>
-							),
+							)
 					)}
 					<CustomButton
 						type="submit"
