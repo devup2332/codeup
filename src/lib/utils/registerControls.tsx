@@ -1,5 +1,5 @@
 import { FieldValues, RegisterOptions } from "react-hook-form";
-import { instance } from "./api/instance";
+import AuthApi from "./api/api";
 import { emailRex } from "./reg";
 
 interface Control {
@@ -38,9 +38,8 @@ export const registerControls: Control[] = [
 			pattern: emailRex,
 			validate: {
 				emailIsUsed: async (val: string) => {
-					const { status } = await instance(
-						"/auth/validateEmail/" + val,
-						"GET"
+					const { status } = await AuthApi.validateEmail(
+						`/auth/validateEmail/${val}`,
 					);
 					if (status !== 0) return true;
 					return false;

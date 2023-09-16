@@ -16,8 +16,8 @@ import {
 } from "../../components/atoms/Icons";
 import { emailRex } from "../../lib/utils/reg";
 import { Alert, Snackbar, Typography } from "@mui/material";
-import { instance } from "../../lib/utils/api/instance";
 import { environments } from "../../environemts";
+import AuthApi from "../../lib/utils/api/api";
 
 const LoginContainer = () => {
 	const { t } = useTranslation("index");
@@ -35,10 +35,7 @@ const LoginContainer = () => {
 	const loginUser: SubmitHandler<FieldValues> = async ({ email, password }) => {
 		try {
 			setLoading(true);
-			const { token, message } = await instance("/auth/login", "POST", {
-				email,
-				password,
-			});
+			const { token, message } = await AuthApi.loginUser({ email, password });
 			if (!token) {
 				setLoading(false);
 				setOpen(true);

@@ -17,8 +17,8 @@ import {
 } from "../../components/atoms/Icons";
 import countryCodes from "../../lib/utils/countryCodes";
 import { registerControls } from "../../lib/utils/registerControls";
-import { instance } from "../../lib/utils/api/instance";
 import { environments } from "../../environemts";
+import AuthApi from "../../lib/utils/api/api";
 
 const RegisterContainer = () => {
 	const { t } = useTranslation("index");
@@ -44,7 +44,7 @@ const RegisterContainer = () => {
 	const registerUser = async (data: any) => {
 		try {
 			setLoading(true);
-			const { token, message } = await instance("/auth/register", "POST", data);
+			const { token, message } = await AuthApi.registerUser(data);
 			if (!token) {
 				setOpen(true);
 				setMessage(message);
@@ -171,7 +171,7 @@ const RegisterContainer = () => {
 												{errors[name]?.type === "emailIsUsed" && (
 													<p className="text-sm text-red-500 font-bold">
 														{t(
-															`register.fields.${name}.errors.emailIsUsed.text`
+															`register.fields.${name}.errors.emailIsUsed.text`,
 														)}
 													</p>
 												)}
@@ -198,7 +198,7 @@ const RegisterContainer = () => {
 										</p>
 									)}
 								</div>
-							)
+							),
 					)}
 					<CustomButton
 						type="submit"

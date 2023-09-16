@@ -1,13 +1,10 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { instance } from "../../../lib/utils/api/instance";
+import AuthApi from "../../../lib/utils/api/api";
 
 export const fetchAuthUser = createAsyncThunk(
 	"userAuth/fetchAuthUser",
 	async (userId: string) => {
-		const response = await instance(
-			`/user/${userId}`,
-			"GET",
-		);
+		const response = await AuthApi.getUser(`/user/${userId}`);
 		return response;
 	},
 );

@@ -1,18 +1,32 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { useEffect } from "react";
+import { fetchAuthUser } from "../redux/actions/userAuth/fetchUserAuth";
+import { useAppDispatch } from "../redux/store";
+import AuthApi from "../lib/utils/api/api";
 
 const SSOAuth = () => {
-	const params = useParams();
-	const { token } = params;
+	const [params] = useSearchParams();
+	const dispatch = useAppDispatch();
+	const navigate = useNavigate();
+
+	const validateToken = async () => {
+		const token = params.get("token");
+		if (token) {
+			const { status, userId } = await AuthApi.validateToken(
+				"/auth/validateToken",
+				{ token },
+			);
+			if (status && userId) {
+				dispatch(fetchAuthUser(userId));
+				localStorage.setItem("codeup-token-user", token);
+				navigate("/");
+			}
+		}
+	};
 
 	useEffect(() => {
-		localStorage.setItem(
-			"authtoken",
-			token ? token.replace("-", ".").replace("-", ".") : ""
-		);
+		validateToken();
 	}, []);
-
-	return <div>{token}</div>;
 };
 
 export default SSOAuth;
