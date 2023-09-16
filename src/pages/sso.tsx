@@ -27,6 +27,8 @@ const SSOAuth = () => {
 	useEffect(() => {
 		validateToken();
 	}, []);
+
+	return <div></div>;
 };
 
 export default SSOAuth;
