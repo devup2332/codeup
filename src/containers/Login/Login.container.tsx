@@ -51,6 +51,7 @@ const LoginContainer = () => {
 		}
 	};
 
+
 	const loginSocial = (service: string) => {
 		const url = `${environments.API_URL}/auth/${service}`;
 		window.location.href = url;
