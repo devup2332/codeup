@@ -132,7 +132,8 @@
 		"sidebar": {
 			"buttons": {
 				"signIn": "Sign In",
-				"signUp": "Sign Up"
+				"signUp": "Sign Up",
+				"newPost": "New Post"
 			},
 			"options": {
 				"home": "Home",

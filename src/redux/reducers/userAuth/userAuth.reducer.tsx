@@ -16,16 +16,16 @@ interface IUserAuthProfile {
 }
 
 interface IUserAuth {
-	profile?: IUserAuthProfile;
+	profile: IUserAuthProfile | null;
 }
 
-const initialState: IUserAuth = {
-	profile: undefined,
+export const userAuthInitialState: IUserAuth = {
+	profile: null,
 };
 
 export const slice = createSlice({
 	name: "userAuth",
-	initialState,
+	initialState: userAuthInitialState,
 	reducers: {
 		setUser: (state, action) => {
 			return { ...state, ...action.payload };
