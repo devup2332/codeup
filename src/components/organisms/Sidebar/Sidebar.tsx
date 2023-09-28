@@ -6,6 +6,7 @@ import { useAppDispatch, useAppSelector } from "../../../redux/store";
 import { CustomButton, SwitchTheme } from "../../atoms";
 import { useTranslation } from "react-i18next";
 import { Avatar, Typography } from "@mui/material";
+import { setUser } from "../../../redux/reducers/userAuth/userAuth.reducer";
 
 const HomeSidebar = () => {
 	const { t } = useTranslation("index");
@@ -17,6 +18,11 @@ const HomeSidebar = () => {
 	};
 	const handleOpenDrawer = () => {
 		dispatch(openSidebarAction(true));
+	};
+
+	const signOut = () => {
+		localStorage.removeItem("codeup-token-user");
+		dispatch(setUser({ profile: null }));
 	};
 
 	return (
@@ -42,6 +48,17 @@ const HomeSidebar = () => {
 						Profile
 					</Link>
 				</li>
+				{profile && (
+					<li className="list-none">
+						<Link
+							className="px-2 py-3 block text-center"
+							to="/"
+							onClick={signOut}
+						>
+							<Typography color="error" fontWeight="600">Sign Out</Typography>
+						</Link>
+					</li>
+				)}
 				<li className="list-none flex items-center justify-center gap-10 py-3">
 					{profile ? (
 						<>
