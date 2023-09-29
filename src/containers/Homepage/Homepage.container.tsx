@@ -6,6 +6,7 @@ import { CustomButton, HomeCard } from "../../components/atoms";
 import { cards } from "../../data";
 import { IconHomePage } from "../../components/atoms/Icons";
 import { useNavigate } from "react-router-dom";
+import { useAppSelector } from "../../redux/store";
 
 interface TabPanelProps {
 	children?: React.ReactNode;
@@ -27,6 +28,7 @@ const TabPanel = (props: TabPanelProps) => {
 
 const HomeContainer = () => {
 	const [value, setValue] = useState(0);
+	const { profile } = useAppSelector((state) => state.userAuth);
 	const navigate = useNavigate();
 	const { t } = useTranslation("index");
 	const xlMatches = useMediaQuery("(min-width: 1280px)");
@@ -47,19 +49,35 @@ const HomeContainer = () => {
 					>
 						{t("homepage.banner.title")}
 					</Typography>
-					<CustomButton
-						className="w-40 justify-self-center hidden lg:justify-self-start"
-						variant="contained"
-						onClick={() => navigate("/register")}
-					>
-						<Typography
-							className="py-1 text-white"
-							fontWeight={700}
-							fontSize={14}
+					{profile ? (
+						<CustomButton
+							className="w-40 justify-self-center hidden lg:justify-self-start"
+							onClick={() => navigate("createPost")}
+							variant="contained"
 						>
-							{t("homepage.banner.button")}
-						</Typography>
-					</CustomButton>
+							<Typography
+								className="py-1 text-white"
+								fontWeight={700}
+								fontSize={14}
+							>
+								{t("homepage.banner.button2")}
+							</Typography>
+						</CustomButton>
+					) : (
+						<CustomButton
+							className="w-40 justify-self-center hidden lg:justify-self-start"
+							variant="contained"
+							onClick={() => navigate("/register")}
+						>
+							<Typography
+								className="py-1 text-white"
+								fontWeight={700}
+								fontSize={14}
+							>
+								{t("homepage.banner.button")}
+							</Typography>
+						</CustomButton>
+					)}
 				</div>
 			</div>
 			<div className="grid gap-5 max-w-md md:max-w-4xl m-auto xl:max-w-6xl 2xl:max-w-7xl xl:gap-10">

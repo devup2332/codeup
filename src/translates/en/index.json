@@ -153,7 +153,8 @@
 		"banner": {
 			"title": "If you love coding so you are in the right place",
 			"body": "Finds a lot of articles about of code and development apps",
-			"button": "Subscribe"
+			"button": "Subscribe",
+			"button2": "Create a post"
 		},
 		"topics": {
 			"title": "Our Topics"

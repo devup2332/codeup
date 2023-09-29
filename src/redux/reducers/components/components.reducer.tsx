@@ -1,12 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { IComponentsState } from "../../../interfaces/ComponentsState";
 import { RootState, store } from "../../store";
-
-interface IComponentsState {
-	openSidebar: boolean;
-}
 
 const initialState: IComponentsState = {
 	openSidebar: false,
+	snackBar: {
+		message: "",
+		open: false,
+	},
 };
 
 export const slice = createSlice({
@@ -15,6 +16,12 @@ export const slice = createSlice({
 	reducers: {
 		openSidebarAction: (state, action) => {
 			return { ...state, openSidebar: action.payload };
+		},
+		setSnackbarAction: (state, action) => {
+			return {
+				...state,
+				snackBar: action.payload,
+			};
 		},
 	},
 });

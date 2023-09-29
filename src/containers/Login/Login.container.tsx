@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import {
 	CustomButton,
 	InputCodeUp,
@@ -18,9 +18,13 @@ import { emailRex } from "../../lib/utils/reg";
 import { Alert, Snackbar, Typography } from "@mui/material";
 import { environments } from "../../environemts";
 import AuthApi from "../../lib/utils/api/api";
+import { useAppDispatch } from "../../redux/store";
+import { setSnackbar } from "../../redux/actions/components/openSidebarActions";
 
 const LoginContainer = () => {
 	const { t } = useTranslation("index");
+	const [params] = useSearchParams();
+	const dispatch = useAppDispatch();
 	const {
 		register,
 		handleSubmit,
@@ -51,7 +55,6 @@ const LoginContainer = () => {
 		}
 	};
 
-
 	const loginSocial = (service: string) => {
 		const url = `${environments.API_URL}/auth/${service}`;
 		window.location.href = url;
@@ -63,6 +66,18 @@ const LoginContainer = () => {
 		}
 		setOpen(false);
 	};
+
+	useEffect(() => {
+		const showSnackbar = params.get("code") === "5561";
+		if (showSnackbar)
+			dispatch(
+				setSnackbar({
+					message: "Email used for a different service",
+					open: true,
+					type: "warning",
+				}),
+			);
+	}, []);
 	return (
 		<div className="w-full flex flex-wrap justify-center items-center h-screen">
 			<form
@@ -79,7 +94,7 @@ const LoginContainer = () => {
 						{t("login.registerText.link")}
 					</Link>
 				</p>
-				<SocialButton type="button">
+				<SocialButton type="button" onClick={() => loginSocial("github")}>
 					<IconGithub className="h-7 w-7" />
 					{t("login.socialButton.text")}
 					{t("login.socialButton.github.brand")}
