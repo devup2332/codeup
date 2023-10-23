@@ -4,7 +4,7 @@ interface IPublicRoutesProps {
 	children: JSX.Element;
 }
 
-export const PublicRoutes = ({ children }: IPublicRoutesProps) => {
+const PublicRoutes = ({ children }: IPublicRoutesProps) => {
 	const token = localStorage.getItem("codeup-token-user");
 
 	if (!token) {
@@ -12,3 +12,5 @@ export const PublicRoutes = ({ children }: IPublicRoutesProps) => {
 	}
 	return <Navigate to="/" />;
 };
+
+export default PublicRoutes;
