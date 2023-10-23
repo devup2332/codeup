@@ -1,9 +1,9 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { HomeHeader, HomeSidebar } from "../../components/organisms";
-import AuthApi from "../../lib/utils/api/api";
 import { fetchAuthUser } from "../../redux/actions/userAuth/fetchUserAuth";
 import { useAppDispatch } from "../../redux/store";
+import { verifyTokenMethod } from "../../utils/verifyToken";
 
 interface HomeTemplateProps {
 	children: JSX.Element;
@@ -12,22 +12,18 @@ interface HomeTemplateProps {
 const HomepageTemplate = ({ children }: HomeTemplateProps) => {
 	const dispatch = useAppDispatch();
 	const navigate = useNavigate();
-	const validateToken = async () => {
-		const token = localStorage.getItem("codeup-token-user");
-		if (token) {
-			const { status, userId } = await AuthApi.validateToken(
-				"/auth/validateToken",
-				{ token },
-			);
-			if (status && userId) {
-				dispatch(fetchAuthUser(userId));
-				navigate("/");
-			}
+
+	const initToken = async () => {
+		const { pass, userId } = await verifyTokenMethod();
+		if (pass && userId) {
+			dispatch(fetchAuthUser(userId));
+		} else {
+			navigate("/");
 		}
 	};
 
 	useEffect(() => {
-		validateToken();
+		initToken();
 	}, []);
 
 	return (

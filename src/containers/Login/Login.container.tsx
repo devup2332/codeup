@@ -16,10 +16,11 @@ import {
 } from "../../components/atoms/Icons";
 import { emailRex } from "../../lib/utils/reg";
 import { Alert, Snackbar, Typography } from "@mui/material";
-import { environments } from "../../environemts";
 import AuthApi from "../../lib/utils/api/api";
 import { useAppDispatch } from "../../redux/store";
 import { setSnackbar } from "../../redux/actions/components/openSidebarActions";
+import { VITE_API_URL } from "../../environemts";
+import { fetchAuthUser } from "../../redux/actions/userAuth/fetchUserAuth";
 
 const LoginContainer = () => {
 	const { t } = useTranslation("index");
@@ -39,13 +40,17 @@ const LoginContainer = () => {
 	const loginUser: SubmitHandler<FieldValues> = async ({ email, password }) => {
 		try {
 			setLoading(true);
-			const { token, message } = await AuthApi.loginUser({ email, password });
+			const { token, message, userId } = await AuthApi.loginUser({
+				email,
+				password,
+			});
 			if (!token) {
 				setLoading(false);
 				setOpen(true);
-				setMessage(message);
-				return;
+				return setMessage(message);
 			}
+			dispatch(fetchAuthUser(userId));
+			localStorage.setItem("codeup-token-user", token);
 			setLoading(false);
 			navigate("/");
 		} catch (err) {
@@ -56,7 +61,7 @@ const LoginContainer = () => {
 	};
 
 	const loginSocial = (service: string) => {
-		const url = `${environments.API_URL}/auth/${service}`;
+		const url = `${VITE_API_URL}/auth/${service}`;
 		window.location.href = url;
 	};
 
@@ -75,7 +80,7 @@ const LoginContainer = () => {
 					message: "Email used for a different service",
 					open: true,
 					type: "warning",
-				}),
+				})
 			);
 	}, []);
 	return (

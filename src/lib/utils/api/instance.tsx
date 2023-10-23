@@ -1,9 +1,9 @@
-import { environments } from "../../../environemts";
+import { VITE_API_URL } from "../../../environemts";
 import { BodyFetch } from "../../../interfaces/BodyFetch";
 
 export const apiInstance = {
 	GET: async (path: string) => {
-		const url = `${environments.API_URL}${path}`;
+		const url = `${VITE_API_URL}${path}`;
 		const response = await fetch(url, {
 			method: "GET",
 			headers: {
@@ -13,7 +13,7 @@ export const apiInstance = {
 		return await response.json();
 	},
 	POST: async (path: string, data: BodyFetch) => {
-		const url = `${environments.API_URL}${path}`;
+		const url = `${VITE_API_URL}${path}`;
 		const response = await fetch(url, {
 			method: "POST",
 			body: JSON.stringify(data),
@@ -24,7 +24,7 @@ export const apiInstance = {
 		return await response.json();
 	},
 	PUT: async (path: string, data: BodyFetch) => {
-		const url = `${environments.API_URL}${path}`;
+		const url = `${VITE_API_URL}${path}`;
 		const response = await fetch(url, {
 			method: "PUT",
 			body: JSON.stringify(data),
@@ -35,7 +35,7 @@ export const apiInstance = {
 		return await response.json();
 	},
 	DELETE: async (path: string, data?: BodyFetch) => {
-		const url = `${environments.API_URL}${path}`;
+		const url = `${VITE_API_URL}${path}`;
 		const response = await fetch(url, {
 			method: "DELETE",
 			body: data ? JSON.stringify(data) : undefined,

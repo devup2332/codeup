@@ -6,6 +6,8 @@ const AuthApi = {
 		return await apiInstance.POST("/auth/login", data);
 	},
 	registerUser: async (data: BodyFetch) => {
+		data.firstName = data.firstName.trim();
+		data.lastName = data.lastName.trim();
 		return await apiInstance.POST("/auth/register", data);
 	},
 	getUser: async (path: string) => {
@@ -15,6 +17,9 @@ const AuthApi = {
 		return await apiInstance.GET(path);
 	},
 	validateToken: async (path: string, body: BodyFetch) => {
+		return await apiInstance.POST(path, body);
+	},
+	refreshToken: async (path: string, body: BodyFetch) => {
 		return await apiInstance.POST(path, body);
 	},
 };

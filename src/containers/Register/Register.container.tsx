@@ -17,13 +17,16 @@ import {
 } from "../../components/atoms/Icons";
 import countryCodes from "../../lib/utils/countryCodes";
 import { registerControls } from "../../lib/utils/registerControls";
-import { environments } from "../../environemts";
 import AuthApi from "../../lib/utils/api/api";
+import { VITE_API_URL } from "../../environemts";
+import { useAppDispatch } from "../../redux/store";
+import { fetchAuthUser } from "../../redux/actions/userAuth/fetchUserAuth";
 
 const RegisterContainer = () => {
 	const { t } = useTranslation("index");
 	const [code, setCode] = useState("");
 	const [open, setOpen] = useState(false);
+	const dispatch = useAppDispatch();
 	const [message, setMessage] = useState("");
 	const [showPass, setshowPass] = useState(false);
 	const [loading, setLoading] = useState(false);
@@ -44,13 +47,16 @@ const RegisterContainer = () => {
 	const registerUser = async (data: any) => {
 		try {
 			setLoading(true);
-			const { token, message } = await AuthApi.registerUser(data);
+			const { token, message, userId } = await AuthApi.registerUser(data);
 			if (!token) {
 				setOpen(true);
 				setMessage(message);
 				setLoading(false);
 				return;
 			}
+
+			localStorage.setItem("codeup-token-user", token);
+			dispatch(fetchAuthUser(userId));
 			setLoading(false);
 			navigate("/");
 		} catch (err) {
@@ -61,7 +67,7 @@ const RegisterContainer = () => {
 	};
 
 	const registerSocial = async (service: string) => {
-		const url = `${environments.API_URL}/auth/${service}`;
+		const url = `${VITE_API_URL}/auth/${service}`;
 		window.location.href = url;
 	};
 
@@ -152,9 +158,7 @@ const RegisterContainer = () => {
 											type={type}
 											field={name}
 											register={register}
-											validations={{
-												...validations,
-											}}
+											validations={validations}
 										/>
 										{errors[name] && (
 											<>
@@ -171,7 +175,7 @@ const RegisterContainer = () => {
 												{errors[name]?.type === "emailIsUsed" && (
 													<p className="text-sm text-red-500 font-bold">
 														{t(
-															`register.fields.${name}.errors.emailIsUsed.text`,
+															`register.fields.${name}.errors.emailIsUsed.text`
 														)}
 													</p>
 												)}
@@ -198,7 +202,7 @@ const RegisterContainer = () => {
 										</p>
 									)}
 								</div>
-							),
+							)
 					)}
 					<CustomButton
 						type="submit"

@@ -39,7 +39,7 @@ export const registerControls: Control[] = [
 			validate: {
 				emailIsUsed: async (val: string) => {
 					const { status } = await AuthApi.validateEmail(
-						`/auth/validateEmail/${val}`,
+						`/auth/validateEmail/${val}`
 					);
 					if (status !== 0) return true;
 					return false;
