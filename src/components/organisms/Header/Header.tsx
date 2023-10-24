@@ -1,6 +1,7 @@
 import MenuIcon from "@mui/icons-material/Menu";
 import InventoryIcon from "@mui/icons-material/Inventory";
 import { useTranslation } from "react-i18next";
+
 import ExitToAppIcon from "@mui/icons-material/ExitToApp";
 import {
 	Avatar,
@@ -19,6 +20,7 @@ import { CustomButton } from "../../atoms";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { setUser } from "../../../redux/reducers/userAuth/userAuth.reducer";
+import { IconProfile } from "../../atoms/Icons";
 
 const HomeHeader = () => {
 	const lgMatches = useMediaQuery("(min-width:1024px)");
@@ -37,6 +39,8 @@ const HomeHeader = () => {
 	const openMenu = (e: React.MouseEvent<HTMLButtonElement>) => {
 		setAnchor(e.currentTarget);
 	};
+
+	const goToPage = (page: string) => navigate(page);
 
 	const closeMenu = () => {
 		setAnchor(null);
@@ -101,6 +105,14 @@ const HomeHeader = () => {
 								anchorEl={anchor}
 								onClose={closeMenu}
 							>
+								<MenuItem onClick={() => goToPage("/profile")}>
+									<ListItemIcon>
+										<IconProfile className="w-6 h-6" />
+									</ListItemIcon>
+									<ListItemText>
+										<Typography>Profile</Typography>
+									</ListItemText>
+								</MenuItem>
 								<MenuItem onClick={signOut}>
 									<ListItemIcon>
 										<ExitToAppIcon color="error" />

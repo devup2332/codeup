@@ -5,3 +5,4 @@ export { default as IconShowPassword } from "./IconShowPassowrd/IconShowPassword
 export { default as IconNotShowPassword } from "./IconNotShowPassword/IconNotShowPassword";
 export { default as IconWave } from "./IconWave/IconWave";
 export { default as IconHomePage } from "./IconHomePage/IconHomePage";
+export { default as IconProfile } from "./IconProfile/IconProfile";
