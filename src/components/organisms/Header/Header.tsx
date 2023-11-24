@@ -34,6 +34,7 @@ const HomeHeader = () => {
 	const signOut = () => {
 		localStorage.removeItem("codeup-token-user");
 		dispatch(setUser({ profile: null }));
+		navigate("/login");
 	};
 
 	const openMenu = (e: React.MouseEvent<HTMLButtonElement>) => {

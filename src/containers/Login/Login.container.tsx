@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+
 import { useTranslation } from "react-i18next";
 import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import {
@@ -80,7 +81,7 @@ const LoginContainer = () => {
 					message: "Email used for a different service",
 					open: true,
 					type: "warning",
-				})
+				}),
 			);
 	}, []);
 	return (
@@ -121,7 +122,6 @@ const LoginContainer = () => {
 						{t("register.or")}
 					</span>
 				</div>
-
 				<div className="grid gap-5">
 					<InputCodeUp
 						register={register}
@@ -134,6 +134,7 @@ const LoginContainer = () => {
 							pattern: emailRex,
 						}}
 					/>
+					<div>hola</div>
 					{errors.email && (
 						<>
 							{errors.email.type === "required" && (
